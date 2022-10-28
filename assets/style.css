@@ -160,3 +160,66 @@ tbody .dash-header, tbody .dash-cell{
     right:30px;
     top:30px;
 }
+/* colors variables settings */
+
+:root {
+    --bgColor: #fff;
+  	--textDefault: #000;
+    --primary: #0B4CFF;
+    --secondary: #FF0B70;
+    --terciary: #00BA5B;
+}
+
+:root[data-theme='dark'] {
+	--bgColor: #161A1D;
+  	--textDefault: #fff;
+    --primary: #ACC2FF;
+    --secondary: #FFAFD0;
+    --terciary: #86E1B3;
+
+}
+
+/* colors variables using examples */
+
+body {
+  background: var(--bgColor);
+  color: var(--textDefault);
+}
+
+.classNameExample {
+	background: var(--terciary);
+    border: 1px solid var(--secondary);
+}
+tr:hover{
+    background-color: transparent!Important;
+}
+
+.column-header-name{
+    color: var(--textDefault);
+}
+
+.svg-inline--fa path{
+    fill: var(--textDefault);
+}
+
+.current-page-container input{
+    display:none!Important;
+    border:none!Important!
+}
+
+.current-page-container .current-page-shadow{
+    color: var(--textDefault)!Important;
+}
+
+.themeToggle label:after{
+    content:"\263D"!Important;
+}
+
+:root[data-theme='dark'] .themeToggle label:after{
+    content:"\2600"!Important;
+}
+
+.themeToggle label{
+    background:none!Important;
+    border:2px solid #cfdad9;
+}

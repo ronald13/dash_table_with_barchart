@@ -5,7 +5,8 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from charts import create_table, set_layout
 import plotly.graph_objects as go
-from dash_bootstrap_templates import ThemeSwitchAIO
+import dash_trich_components as dtc
+
 from styling import PAGE_SIZE
 
 
@@ -32,11 +33,10 @@ server = app.server
     [Input('table', "data"),
      Input('table', "page_current"),
      Input('table', "page_size"),
-     Input(ThemeSwitchAIO.ids.switch("theme"), "value")],
+    ],
     # [State("university-table", "columns")],
 )
-def update_table(data, page_current, page_size, toggle):
-    template = template_theme1 if toggle else template_theme2
+def update_table(data, page_current, page_size):
     df = pd.DataFrame(data)
     # sort df with pages
     df = df.iloc[page_current * page_size:(page_current + 1) * page_size]
@@ -52,11 +52,17 @@ def update_table(data, page_current, page_size, toggle):
         )
     )
     set_layout(row_barchart, heightgraph=len(df) * 42)
-    row_barchart.update_layout(template=template)
 
     return row_barchart
 
-theme_switch = html.Div(ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2] ), className='theme__switcher')
+theme_toggle = dtc.ThemeToggle(
+        bg_color_dark='#232323',
+        # icon_color_dark='#EDC575',
+        # bg_color_light='#07484E',
+        icon_color_light='#C8DBDC',
+        tooltip_text='Toggle light/dark theme'
+    )
+theme_switch = html.Div(theme_toggle, className='theme__switcher')
 header = html.Div([
         html.H1('Table + Bar'),
         html.P('There is no way to add a bar chart to the table in dash. You can work with Displaying Data Bars, but it looks rather clumsy'),
