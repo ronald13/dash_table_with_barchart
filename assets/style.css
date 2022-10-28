@@ -22,7 +22,8 @@ p{
 }
 .dash__header p{
     font-size:14px;
-    margin:10px 0 20px 0 ;
+    margin:10px 0 20px 0;
+    width:50%;
 
 }
 .dropdown{
@@ -31,6 +32,7 @@ p{
 
 .dash__header {
     display:flex;
+    flex-direction:column;
     align-items:flex-start;
     width:100%;
 }
@@ -41,6 +43,7 @@ p{
 
 .dash__wrapper{
     display:flex;
+    position:relative;
     flex-direction:column;
     font-family: 'Poppins', sans-serif;
     padding:30px 30px;
@@ -135,8 +138,25 @@ table tbody tr th:last-child(){
     color:#000;
     width:100%;
 }
+tbody .dash-header, tbody .dash-cell{
+    background-color:transparent!Important;
+}
 
+.previous-next-container button, .previous-next-container .current-page-container input{
+    background-color:transparent!Important;
+     border-bottom:solid transparent 1px !important
+
+}
+.current-page-shadow {
+    border-bottom:none!Important;
+}
 .table_name{
     font-weight:600;
     margin: 0 0 10px 0;
+}
+
+.theme__switcher{
+    position:absolute;
+    right:30px;
+    top:30px;
 }
